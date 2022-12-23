@@ -27,3 +27,24 @@ export const searchedMovie = (movie)=>async(dispatch)=>{
         payload:movie
     })
 }
+
+export const addToFavourite = (id)=>async(dispatch)=>{
+    dispatch({
+        type:"ADD_TO_FAVOURITE",
+        payload:id
+    })
+}
+
+export const removeFromFavourite = (id)=>async(dispatch)=>{
+    dispatch({
+        type:"REMOVE_FROM_FAVOURITE",
+        payload:id
+    })
+}
+
+export const isFavourite = (isFav,id)=>async(dispatch)=>{
+    dispatch({
+        type:"IS_FAVOURITE",
+        payload:{isFav,id}
+    })
+}
