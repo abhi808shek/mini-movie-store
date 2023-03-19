@@ -1,10 +1,12 @@
 import React from "react";
 import "./singlecard.css";
 import { useSelector } from "react-redux";
+import {useNavigate} from "react-router-dom"
 
 const SingleCard = () => {
   const { movieById } = useSelector((state) => state.moviesReducer);
   const { Title, Year, imdbRating, Poster, Country } = movieById;
+ const navigate = useNavigate()
   console.log("sniwen", movieById);
   return (
     <div className="single-movie-page">
@@ -18,7 +20,7 @@ const SingleCard = () => {
             <p> {Year} </p>
             <p>{imdbRating}/10</p>
             <p>{Country}</p>
-            <button className="single-movie-details-Btn"> Back</button>
+            <button className="single-movie-details-Btn" onClick={()=>navigate("/")}> Back</button>
           </div>
         </div>
       </div>

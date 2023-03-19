@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAllMovies,
   getMoviesById,
-  addToFavourite,
-  removeFromFavourite,
-  isFavourite
+  // addToFavourite,
+  // removeFromFavourite,
+  // isFavourite
 } from "../Redux/actionCreator";
 import { NavLink } from "react-router-dom";
 
@@ -15,8 +15,6 @@ const SingleMovie = () => {
   const { allMovies, searchMovie,isFavouriteMovies } = useSelector(
     (state) => state.moviesReducer
   );
-  console.log("isFavouriteMovies", isFavouriteMovies);
-  console.log("searchMovie", searchMovie);
   useEffect(() => {
     dispatch(getAllMovies(searchMovie));
   }, []);
@@ -24,9 +22,9 @@ const SingleMovie = () => {
     <div className="single-movie-card-full-page">
       <div className="single-movie-cards">
         {allMovies?.length ? (
-          allMovies.map((item) => {
+          allMovies.map((item,index) => {
             return (
-              <div className="single-movie-card-box">
+              <div className="single-movie-card-box" key={index}>
                 <NavLink
                   to={`/${item.imdbID}`}
                   key={item.imdbID}
@@ -43,7 +41,7 @@ const SingleMovie = () => {
                     className="single-movie-card-box-img"
                   />
                 </NavLink>
-                <div className="single-movie-card-box-Btn">
+                {/* <div className="single-movie-card-box-Btn">
                   {isFavouriteMovies ? (
                     <button
                       onClick={() => {
@@ -64,12 +62,12 @@ const SingleMovie = () => {
                     </button>
                   )}
                   <button>add to playlist</button>
-                </div>
+                </div> */}
               </div>
             );
           })
         ) : (
-          <h1>No MOviews Found</h1>
+          <h1 style={{textAlign:"center",width:"100%"}}>No Movies Found</h1>
         )}
       </div>
     </div>
